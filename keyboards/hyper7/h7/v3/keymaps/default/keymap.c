@@ -524,6 +524,10 @@ void matrix_scan_keymap(void) {
 }
 
 bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
+  if (!process_record_user(keycode, record)) {
+    return false;
+  }
+
   if (record->event.pressed) {
     switch(keycode) {
       // [daughter board] row 1 POS key macros
